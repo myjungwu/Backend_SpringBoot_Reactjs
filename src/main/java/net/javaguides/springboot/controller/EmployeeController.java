@@ -22,26 +22,26 @@ import net.javaguides.springboot.repository.EmployeeRepository;
 
 //@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1/employees")
 public class EmployeeController {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
 	// get all employees
-	@GetMapping("/employees")
+	@GetMapping
 	public List<Employee> getAllEmployees(){
 		return employeeRepository.findAll();
 	}		
 	
 	// create employee rest api
-	@PostMapping("/employees")
+	@PostMapping
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return employeeRepository.save(employee);
 	}
 	
 	// get employee by id rest api
-	@GetMapping("/employees/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
@@ -50,7 +50,7 @@ public class EmployeeController {
 	
 	// update employee rest api
 	
-	@PutMapping("/employees/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails){
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
@@ -64,7 +64,7 @@ public class EmployeeController {
 	}
 	
 	// delete employee rest api
-	@DeleteMapping("/employees/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
 		Employee employee = employeeRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
