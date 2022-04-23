@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //@Profile("test")
 @Configuration
+@Profile("test")
 public class WebConfig implements WebMvcConfigurer{
 	@Autowired
 	private Environment environment;
