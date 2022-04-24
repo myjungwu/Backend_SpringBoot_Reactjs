@@ -18,8 +18,9 @@ public class WebConfig implements WebMvcConfigurer{
 	public void addCorsMappings(CorsRegistry registry) {
 		String reactUrl = environment.getProperty("react.url");
 		System.out.println("==>> reactUrl = " + reactUrl);
+
 		registry.addMapping("/**")
-				.allowedOrigins(reactUrl)
+				.allowedOrigins("*")
 				.allowedMethods("*");
 	}
 
