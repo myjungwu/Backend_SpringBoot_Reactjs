@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //@Profile("test")
 @Configuration
-@Profile("test")
+//@Profile("test")
 public class WebConfig implements WebMvcConfigurer{
 	@Autowired
 	private Environment environment;
@@ -17,6 +17,7 @@ public class WebConfig implements WebMvcConfigurer{
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		String reactUrl = environment.getProperty("react.url");
+		System.out.println("==>> reactUrl = " + reactUrl);
 		registry.addMapping("/**")
 				.allowedOrigins(reactUrl)
 				.allowedMethods("*");
