@@ -8,20 +8,22 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //@Profile("test")
-@Configuration
+//@Configuration
 //@Profile("test")
 public class WebConfig implements WebMvcConfigurer{
 	@Autowired
 	private Environment environment;
 
-	@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		String reactUrl = environment.getProperty("react.url");
-		System.out.println("==>> reactUrl = " + reactUrl);
-
-		registry.addMapping("/**")
-				.allowedOrigins("*")
-				.allowedMethods("*");
-	}
+//	@Override
+//	public void addCorsMappings(CorsRegistry registry) {
+//		String reactUrl = environment.getProperty("react.url");
+//		System.out.println("==>> reactUrl = " + reactUrl);
+//
+//		registry.addMapping("/**")
+//				.allowedOrigins("*")
+//				.allowedMethods("*")
+//				.allowCredentials(false)
+//				.maxAge(3600);
+//	}
 
 }
